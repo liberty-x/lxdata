@@ -7,7 +7,7 @@ var env = require('env2')('./config.env');
 var apiId = process.env.apiId;
 var apiKey = process.env.apiKey;
 
-var tubeLine = ['victoria'];
+var tubeLine = ['victoria', 'bakerloo'];
 
 var headers = {
     'content-type' : 'text/html'
