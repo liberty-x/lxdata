@@ -1,0 +1,30 @@
+{
+  "name": "lxdata",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handlers.js",
+  "scripts": {
+    "test": "./node_modules/.bin/tape ./test/backendTest.js",
+    "start": "node server.js",
+    "coverage": "istanbul cover ./node_modules/.bin/tape ./test/backendTest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liberty-x/lxdata.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liberty-x/lxdata/issues"
+  },
+  "homepage": "https://github.com/liberty-x/lxdata#readme",
+  "dependencies": {
+    "env2": "^2.0.4",
+    "request": "^2.65.0"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.0",
+    "shot": "^1.7.0",
+    "tape": "^4.2.1"
+  }
+}
