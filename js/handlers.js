@@ -32,9 +32,8 @@ handlers.api = function(req, res) {
     res.writeHead(200, headers);
     request('https://api.tfl.gov.uk/Line/' + userInput + '/StopPoints?app_id=' + apiId + '&app_key=' + apiKey, function(error, response, body) {
       if (!error && response.statusCode == 200) {
-        var gateData = app.getGateValues(body);
-        console.log(gateData);
-        res.end(gateData);
+        var stationData = app.getStationData(body);
+        res.end(JSON.stringify(stationData));
       }
     });
   });

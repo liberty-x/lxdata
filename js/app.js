@@ -1,93 +1,50 @@
 var app = module.exports = {};
 
-// don't
-
-app.getGateValues = function(body){
-  var stationArray = JSON.parse(body);
-  var keyValues = stationArray.map(function(station){
-
-    var stationName = station.commonName;
-    var value = station.additionalProperties.reduce(function(value, property){
-      if (property.key === "Gates"){
-        value = property.value;
-      }
-      return value;
-    }, '');
-    return {
-      name: stationName,
-      value: value
-    };
-  });
-  console.log(keyValues);
+app.getStationData = function(body){
+  var stationArray = JSON.parse(body),
+      largestStations = app.getLargestStations(stationArray);
+  return app.buildGraphObject(largestStations);
 };
 
+app.getLargestStations = function (stationArray) {
+  var sortedArray = stationArray.sort(function (a,b) {
+        a = app.getValueFromStation(a, 'Gates');
+        b = app.getValueFromStation(b, 'Gates');
+        if (a > b) {
+          return -1;
+        }
+        if (a < b) {
+          return 1;
+        }
+        return 0;
+      });
+  return sortedArray.slice(0,4);
+};
 
-// sort the array of above values
+app.buildGraphObject = function (largestStations) {
+  var object = {
+    labels: ["Gates", "Lines", "Payphones", "Escalators", "Cash Machines"],
+    datasets: []
+  };
 
-// slice first 4 off
+  return largestStations.reduce(function(previousValue, currentValue, index, array) {
+    previousValue.datasets[index] = {
+      label: currentValue.commonName.replace(' Underground Station', ''),
+      data: [
+        app.getValueFromStation(currentValue, 'Gates'),
+        currentValue.lines.length,
+        app.getValueFromStation(currentValue, 'Payphones'),
+        app.getValueFromStation(currentValue, 'Escalators'),
+        app.getValueFromStation(currentValue, 'Cash Machines')
+      ]
+    };
+    return previousValue;
+  }, object);
+};
 
-// map over each station name, return object with
-//   {
-// label : stationName
-// data : function getDataArray(stationName){}
-// }
-
-
-
-
-
-// app.getData = function(body){
-//   var gateValues = getGateValues(body);
-//   var topThreeGates = gateValues.sort(// something)
-//   topThreeGates
-// };
-
-// needs doing
-// app.getValueForKey(body){
-//   var stationArray = JSON.parse(body);
-//   var keyValues = stationArray.map(function(station){
-//     return station.additionalProperties.reduce(function(value, property){
-//       if (property.key === "Gates"){
-//         value = property.value;
-//       }
-//       return value;
-//     }, '');
-//   });
-// }
-//
-// function fourStationsWithMostGates(body){
-//   // JSON.parse
-// }
-//
-//
-//
-//
-// // specific for number of lines
-// function getNumberOfLines(){
-//
-// }
-//
-//
-// // KEYS
-// // gates: "Gates"
-// // cash machines: "Cash Machines"
-// // pay phones: "Payphones"
-// // Lines: "lines".length
-// // escalators: "Escalators"
-
-// var data = {
-//       labels: ["Gates", "Lines", "Pay Phones", "Escalators", "Cash Machines"],
-//       datasets: [{
-//         label: topStation,
-//         data: [gates, lines, payphones, escalators, cashmachines]
-//       }, {
-//         label: "secondStation",
-//         data: [gates, lines, payphones, escalators, cashmachines]
-//       }, {
-//         label: "thirdStation",
-//         data: [gates, lines, payphones, escalators, cashmachines]
-//       }, {
-//         label: "fourthStation",
-//         data: [gates, lines, payphones, escalators, cashmachines]
-//       }]
-//     };
+app.getValueFromStation = function (stationObject, key) {
+  key = stationObject.additionalProperties.find(function(element, index, array) {
+    if (element.key === key) return true;
+  });
+  return key ? Number(key.value) : 0; // ternary solves a little bug with Paddington H&C line
+};
