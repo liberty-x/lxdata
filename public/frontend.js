@@ -1,5 +1,6 @@
 var request = new XMLHttpRequest ();
 var lineInput = document.getElementById("userLine").value;
+console.log(lineInput);
 
 function getLineData (lineInput) {
   request.onreadystatechange = function() {

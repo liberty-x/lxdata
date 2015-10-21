@@ -1,5 +1,5 @@
 var test = require('tape');
-var router = require('../router.js');
+var router = require('../js/router.js');
 var shot = require('shot');
 
 test('check server is running', function(t){
