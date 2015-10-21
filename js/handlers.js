@@ -1,13 +1,11 @@
 var handlers = module.exports = {};
 var request = require('request');
 var fs = require('fs');
-var index = fs.readFileSync(__dirname + '/public/index.html');
-
+var index = fs.readFileSync(__dirname + '/../public/index.html');
+var app = require('./app.js');
 var env = require('env2')('./config.env');
 var apiId = process.env.apiId;
 var apiKey = process.env.apiKey;
-//
-// var line =
 
 var headers = {
     'content-type' : 'text/html'
@@ -19,7 +17,7 @@ handlers.home = function(req, res) {
 };
 
 handlers.file = function(req, res){
-    var file = fs.readFileSync(__dirname + req.url);
+    var file = fs.readFileSync(__dirname + '/../' + req.url);
     var ext = (req.url).split('.')[1];
     res.writeHead(200, {'content-type' : 'text/' + ext});
     res.end(file);
