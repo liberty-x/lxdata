@@ -1,6 +1,7 @@
 var test = require('tape');
 var router = require('../js/router.js');
 var shot = require('shot');
+var app = require('../js/app.js');
 
 test('check server is running', function(t){
   var request = {
@@ -45,9 +46,8 @@ test('check if 404 is returned if there us an error', function(t){
   });
 });
 
-test('Is api request returning data', function(t){
+test('Is api request being dealt with by the handler', function(t){
   var request = {
-    method: 'GET',
     url: '/apirequest'
   };
 
@@ -58,9 +58,3 @@ test('Is api request returning data', function(t){
     t.end();
   });
 });
-
-// test('Is random tube line returned', function(t){
-//
-//   t.equal(expected, result, 'random number returned');
-//   t.end();
-// });
