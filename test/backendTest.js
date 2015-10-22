@@ -1,6 +1,7 @@
 var test = require('tape');
 var router = require('../js/router.js');
 var shot = require('shot');
+var apiObj = require('./testData.js');
 
 test('check server is running', function(t){
   var request = {
