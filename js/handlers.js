@@ -26,25 +26,19 @@ handlers.file = function(req, res){
 
 handlers.api = function(req, res) {
   var userInput = "";
-  req.on("data", function(data) {
-    userInput += data;
+  req.on("data", function(data){
+      userInput += data;
   });
   req.on("end", function() {
     res.writeHead(200, headers);
     request('https://api.tfl.gov.uk/Line/' + userInput + '/StopPoints?app_id=' + apiId + '&app_key=' + apiKey, function(error, response, body) {
       if (!error && response.statusCode == 200) {
         var stationData = app.getStationData(body);
-        // start
-        var fourLargest = app.getLargestStations(JSON.parse(body));
-        var testSample = app.buildGraphObject(fourLargest);
-        console.log(util.inspect(JSON.stringify(testSample), false, null));
-        // end
         var mapData = app.SpecificTubeLine(body);
         var obj = {
           stationData : stationData,
           mapData : mapData
         };
-        // console.log(obj);
         res.end(JSON.stringify(obj));
       }
     });
