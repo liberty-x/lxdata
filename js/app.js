@@ -56,3 +56,16 @@ app.getValueFromStation = function (stationObject, key) {
   });
   return key ? Number(key.value) : 0; // ternary solves a little bug with Paddington H&C line
 };
+
+app.SpecificTubeLine = function (body){
+  var all = JSON.parse(body).map(app.onlyGetTubeStops);
+  return all;
+};
+
+app.onlyGetTubeStops = function (value){
+    return {
+      tube: value.commonName,
+      lng: value.lon,
+      lat: value.lat
+    };
+};

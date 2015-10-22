@@ -3,6 +3,7 @@
   <head>
     <link href='/public/style.css' rel='stylesheet'>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
   </head>
 
   <body>
@@ -11,6 +12,7 @@
       <input type="text" placeholder="search for a tube line" id="userLine"/>
       <input type="submit"/>
     </form>
+    <div id="map"></div>
 
     <div>
       <canvas id="stationChart" width="800" height="400"></canvas>
@@ -18,8 +20,10 @@
 
     <div id="chartData">
     </div>
-
-     <script src="/public/frontend.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script> -->
+    <!-- <script src = "/js/d3.js"></script> -->
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
+    <script src = "/public/frontend.js"></script>
   </body>
 
 </html>

@@ -26,8 +26,8 @@ function getLineData(lineInput){
   request.onreadystatechange = function() {
     if (request.readyState == 4 && request.status === 200) {
       response = JSON.parse(request.response);
-      printResponse(response);
-      makeChart(response);
+      printResponse(response.stationData);
+      makeChart(response.stationData);
     }
   };
   request.open("POST", '/apirequest');
@@ -47,3 +47,12 @@ function makeChart(response){
   var ctx = stationChart.getContext('2d');
   var chart = new Chart(ctx).Radar(response, options);
 }
+
+var map = L.map('map').setView([51.505, -0.09], 13);
+
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 18,
+    id: 'rug1.cig20l3pk00n7v0m6fuktu8wh',
+    accessToken: 'pk.eyJ1IjoicnVnMSIsImEiOiJjaWcyMGwzemIwMG1wdjNsd2ZjcWJ3NmQwIn0.j1CaTZiiOCtDl4xfSWA_vw'
+}).addTo(map);
