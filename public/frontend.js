@@ -28,3 +28,7 @@ function getLineData (lineInput) {
   request.open("POST", '/apirequest');
   request.send(lineInput);
 }
+
+function loadMarkers(arr){
+  console.log("finish me please");
+}
