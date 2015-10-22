@@ -30,6 +30,14 @@ app.buildGraphObject = function (largestStations) {
   return largestStations.reduce(function(previousValue, currentValue, index, array) {
     previousValue.datasets[index] = {
       label: currentValue.commonName.replace(' Underground Station', ''),
+      // add chart formatting (needs to be made dynamic)
+      fillColor: "rgba(255, 0, 0, 0.2)",
+      strokeColor: "rgba(255, 0, 0, 1)",
+      pointColor: "rgba(255, 0, 0, 1)",
+      pointStrokeColor: "#fff",
+      pointHighlightFill: "#fff",
+      pointHighlightStroke: "rgba(220,220,220,1)",
+      // end of chart formatting
       data: [
         app.getValueFromStation(currentValue, 'Gates'),
         app.getValueFromStation(currentValue, 'Lifts'),

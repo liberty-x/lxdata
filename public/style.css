@@ -6,15 +6,19 @@ h1 {
   color: red;
 }
 
-#log {
+#chartData {
   font-size: 0.8em;
 }
 
-#log h4 {
+#chartData h4 {
   margin-bottom: 0.4em;
 }
 
-#log p {
+#chartData p {
   margin-bottom: 0;
   margin-top: 0.1em;
+}
+
+#stationChart {
+  background-color:rgb(69, 69, 69);
 }
