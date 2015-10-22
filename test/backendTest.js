@@ -1,6 +1,7 @@
 var test = require('tape');
 var router = require('../js/router.js');
 var shot = require('shot');
+var app = require('../js/app.js');
 
 test('check server is running', function(t){
   var request = {
@@ -9,9 +10,9 @@ test('check server is running', function(t){
   };
 
   shot.inject(router, request, function(res){
-    var result = res.statusCode;
+    var actual = res.statusCode;
     var expected = 200;
-    t.equal(expected, result, 'server is up and running');
+    t.equal(actual, expected, 'server is up and running');
     t.end();
   });
 });
@@ -24,9 +25,9 @@ test('check handler can process files', function(t){
   };
 
   shot.inject(router, request, function(res){
-    var result = res.statusCode;
+    var actual = res.statusCode;
     var expected = 200;
-    t.equal(expected, result, 'handler ready to process files');
+    t.equal(actual, expected, 'handler ready to process files');
     t.end();
   });
 });
@@ -38,29 +39,42 @@ test('check if 404 is returned if there us an error', function(t){
   };
 
   shot.inject(router, request, function(res){
-    var result = res.statusCode;
+    var actual = res.statusCode;
     var expected = 404;
-    t.equal(expected, result, '404 error returned');
+    t.equal(actual, expected, '404 error returned');
     t.end();
   });
 });
 
-test('Is api request returning data', function(t){
+test('Is api request being dealt with by the handler', function(t){
   var request = {
-    method: 'GET',
     url: '/apirequest'
   };
 
   shot.inject(router, request, function(res){
-    var result = res.statusCode;
+    var actual = res.statusCode;
     var expected = 200;
-    t.equal(expected, result, 'api data received');
+    t.equal(actual, expected, 'api data received');
     t.end();
   });
 });
 
-// test('Is random tube line returned', function(t){
-//
-//   t.equal(expected, result, 'random number returned');
+// test('Is api request being dealt with by the handler', function(t){
+//   var userInput = '';
+//   actual =  handlers.apiRequest(userInput);
+//   expected = [];
+//     t.equal(actual, expected, 'test passed!');
+//     t.end();
+// });
+
+// test('Is the tube station, lng and lat only being returned as an object', function(t){
+//   var value = '?';
+//   var actual = app.onlyGetTubeStops(value);
+//   var expected = {
+//     tube: 'Brixton UnderGround Station',
+//     lng: 1234,
+//     lat: 5678
+//   };
+//   t.equal(actual, expected, 'test passed!');
 //   t.end();
 // });

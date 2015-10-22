@@ -1,4 +1,6 @@
-var handlers = module.exports = {};
+var handlers = module.exports = {
+  apiRequest: apiRequest
+};
 var request = require('request');
 var fs = require('fs');
 var index = fs.readFileSync(__dirname + '/../public/index.html');
@@ -30,15 +32,18 @@ handlers.api = function(req, res) {
   });
   req.on("end", function() {
     res.writeHead(200, headers);
-    request('https://api.tfl.gov.uk/Line/' + userInput + '/StopPoints?app_id=' + apiId + '&app_key=' + apiKey, function(error, response, body) {
-      if (!error && response.statusCode == 200) {
-        //console.log(body);
-        res.end(body);
-      }
-    });
+    apiRequest(userInput);
+    res.end();
   });
 };
 
+function apiRequest(userInput) {
+  request('https://api.tfl.gov.uk/Line/' + userInput + '/StopPoints?app_id=' + apiId + '&app_key=' + apiKey, function(error, response, body) {
+    if (!error && response.statusCode == 200) {
+      app.SpecificTubeLine(body);
+    }
+  });
+}
 
 handlers.notFound = function(req, res){
     res.writeHead(404, headers);

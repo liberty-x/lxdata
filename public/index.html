@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href = '/public/style.css' rel = 'stylesheet'>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
+    <link href = "/public/style.css" rel = "stylesheet">
   </head>
 
   <body>
@@ -10,7 +11,11 @@
       <input type="text" placeholder="search for a tube line" id="userLine"/>
       <input type="submit"/>
     </form>
-     <script src = "/public/frontend.js"></script>
+    <div id="map"></div>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script> -->
+    <!-- <script src = "/js/d3.js"></script> -->
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
+    <script src = "/public/frontend.js"></script>
   </body>
 
 </html>
