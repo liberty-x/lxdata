@@ -23,7 +23,7 @@ app.getLargestStations = function (stationArray) {
 
 app.buildGraphObject = function (largestStations) {
   var object = {
-    labels: ["Gates", "Lines", "Payphones", "Escalators", "Cash Machines"],
+    labels: ["Gates", "Lifts", "Payphones", "Escalators", "Cash Machines"],
     datasets: []
   };
 
@@ -32,7 +32,7 @@ app.buildGraphObject = function (largestStations) {
       label: currentValue.commonName.replace(' Underground Station', ''),
       data: [
         app.getValueFromStation(currentValue, 'Gates'),
-        currentValue.lines.length,
+        app.getValueFromStation(currentValue, 'Lifts'),
         app.getValueFromStation(currentValue, 'Payphones'),
         app.getValueFromStation(currentValue, 'Escalators'),
         app.getValueFromStation(currentValue, 'Cash Machines')
