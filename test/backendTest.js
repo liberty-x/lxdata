@@ -61,6 +61,15 @@ test('Is api request being dealt with by the handler', function(t){
   });
 });
 
+// test('Is api request being dealt with by the handler', function(t){
+//   var userInput = 'victoria';
+//   actual =  handlers.apiRequest(userInput);
+//   console.log(actual);
+//   expected = data.data;
+//     t.equal(actual, expected, 'test passed!');
+//     t.end();
+// });
+
 test('Is an array being returned with wanted data', function(t){
   var body = JSON.stringify(data.data);
   var actual = app.SpecificTubeLine(body);
