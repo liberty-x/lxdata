@@ -64,7 +64,7 @@ app.SpecificTubeLine = function (body){
 
 app.onlyGetTubeStops = function (value){
     return {
-      tube: value.commonName,
+      stationName: value.commonName,
       lng: value.lon,
       lat: value.lat
     };
