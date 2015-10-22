@@ -1,6 +1,6 @@
 var http = require('http');
 var router  = require('./router.js');
-var port = process.env.port || 8000;
+var port = process.env.PORT || 8000;
 var app = function(req, res) {
     router(req, res);
 };
