@@ -6,6 +6,7 @@ var app = require('./app.js');
 var env = require('env2')('./config.env');
 var apiId = process.env.apiId;
 var apiKey = process.env.apiKey;
+var util = require('util');
 
 var headers = {
     'content-type' : 'text/html'
@@ -33,13 +34,17 @@ handlers.api = function(req, res) {
     request('https://api.tfl.gov.uk/Line/' + userInput + '/StopPoints?app_id=' + apiId + '&app_key=' + apiKey, function(error, response, body) {
       if (!error && response.statusCode == 200) {
         var stationData = app.getStationData(body);
-        console.log(stationData);
+        // start
+        var fourLargest = app.getLargestStations(JSON.parse(body));
+        var testSample = app.buildGraphObject(fourLargest);
+        console.log(util.inspect(JSON.stringify(testSample), false, null));
+        // end
         var mapData = app.SpecificTubeLine(body);
         var obj = {
           stationData : stationData,
           mapData : mapData
         };
-        console.log(obj);
+        // console.log(obj);
         res.end(JSON.stringify(obj));
       }
     });

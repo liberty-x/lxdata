@@ -61,15 +61,6 @@ test('Is api request being dealt with by the handler', function(t){
   });
 });
 
-// test('Is api request being dealt with by the handler', function(t){
-//   var userInput = 'victoria';
-//   actual =  handlers.apiRequest(userInput);
-//   console.log(actual);
-//   expected = data.data;
-//     t.equal(actual, expected, 'test passed!');
-//     t.end();
-// });
-
 test('Is an array being returned with wanted data', function(t){
   var body = JSON.stringify(data.data);
   var actual = app.SpecificTubeLine(body);
@@ -78,10 +69,23 @@ test('Is an array being returned with wanted data', function(t){
   t.end();
 });
 
-test('Does the function retrieve a value of a Facility', function(t){
+test('Does getValueFromStation retrieve a value of a Facility?', function(t){
   var actual = app.getValueFromStation(data.victoria, 'Gates');
-  console.log(actual);
   var expected = 33;
+  t.deepEqual(actual, expected, 'test passed!');
+  t.end();
+});
+
+test('Does getLargestStations retrieve four largest stations?', function(t){
+  var actual = app.getLargestStations(data.data);
+  var expected = data.getLargestStationsExpected;
+  t.deepEqual(actual, expected, 'test passed!');
+  t.end();
+});
+
+test('Does buildGraphObject format the data correctly?', function(t){
+  var actual = app.buildGraphObject(data.getLargestStationsExpected);
+  var expected = data.buildGraphObjectExpected;
   t.deepEqual(actual, expected, 'test passed!');
   t.end();
 });
