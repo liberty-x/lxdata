@@ -26,7 +26,6 @@ function getLineData(lineInput){
   request.onreadystatechange = function() {
     if (request.readyState == 4 && request.status === 200) {
       response = JSON.parse(request.response);
-      console.log(response);
       printResponse(response);
       makeChart(response);
     }
