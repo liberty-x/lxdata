@@ -77,3 +77,11 @@ test('Is an array being returned with wanted data', function(t){
   t.deepEqual(actual, expected, 'test passed!');
   t.end();
 });
+
+test('Does the function retrieve a value of a Facility', function(t){
+  var actual = app.getValueFromStation(data.victoria, 'Gates');
+  console.log(actual);
+  var expected = 33;
+  t.deepEqual(actual, expected, 'test passed!');
+  t.end();
+});
