@@ -25,8 +25,7 @@
   },
   "pre-commit": [
     "test",
-    "coverage",
-    "codeclimate"
+    "coverage"
   ],
   "devDependencies": {
     "codeclimate-test-reporter": "^0.1.1",
