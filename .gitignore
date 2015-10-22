@@ -2,3 +2,4 @@ config.env
 npm-debug.log
 node_modules
 coverage
+.DS_Store

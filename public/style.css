@@ -1,6 +1,26 @@
+body {
+  font-family: sans-serif;
+}
+
 h1 {
   color: red;
 }
+
+#chartData {
+  font-size: 0.8em;
+}
+
+#chartData h4 {
+  margin-bottom: 0.4em;
+}
+
+#chartData p {
+  margin-bottom: 0;
+  margin-top: 0.1em;
+}
+
+#stationChart {
+  background-color:rgb(69, 69, 69);
 
 #map {
   height: 500px;
