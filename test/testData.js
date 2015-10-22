@@ -5,4 +5,4 @@ var expected = [ { lat: 51.586925, lng: -0.041143, tube: 'Blackhorse Road Underg
 module.exports = {
   data: data,
   expected: expected
-}
+};

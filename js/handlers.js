@@ -1,6 +1,4 @@
-var handlers = module.exports = {
-  apiRequest: apiRequest
-};
+var handlers = module.exports = {};
 var request = require('request');
 var fs = require('fs');
 var index = fs.readFileSync(__dirname + '/../public/index.html');
@@ -31,22 +29,20 @@ handlers.api = function(req, res) {
     userInput += data;
   });
   req.on("end", function() {
-    apiRequest(userInput, res);
-    res.writeHead(200, headers);
+    request('https://api.tfl.gov.uk/Line/' + userInput + '/StopPoints?app_id=' + apiId + '&app_key=' + apiKey, function(error, response, body) {
+      if (!error && response.statusCode == 200) {
+        var stationData = app.getStationData(body);
+        var mapData = app.SpecificTubeLine(body);
+        var obj = {
+          stationData : stationData,
+          mapData : mapData
+        };
+        res.writeHead(200, headers);
+        res.end(JSON.stringify(obj));
+      }
+    });
   });
 };
-
-function apiRequest(userInput, res) {
-  request('https://api.tfl.gov.uk/Line/' + userInput + '/StopPoints?app_id=' + apiId + '&app_key=' + apiKey, function(error, response, body) {
-    if (!error && response.statusCode == 200) {
-      var arr = app.SpecificTubeLine(body);
-      var obj = {
-        arr: arr
-      };
-      res.end(JSON.stringify(obj));
-    }
-  });
-}
 
 handlers.notFound = function(req, res){
     res.writeHead(404, headers);
