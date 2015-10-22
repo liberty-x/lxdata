@@ -2,6 +2,8 @@ var test = require('tape');
 var router = require('../js/router.js');
 var shot = require('shot');
 var app = require('../js/app.js');
+var data = require('./testData.js');
+var handlers = require('../js/handlers.js');
 
 test('check server is running', function(t){
   var request = {
@@ -60,21 +62,17 @@ test('Is api request being dealt with by the handler', function(t){
 });
 
 // test('Is api request being dealt with by the handler', function(t){
-//   var userInput = '';
+//   var userInput = 'victoria';
 //   actual =  handlers.apiRequest(userInput);
-//   expected = [];
+//   expected = data.data;
 //     t.equal(actual, expected, 'test passed!');
 //     t.end();
 // });
 
-// test('Is the tube station, lng and lat only being returned as an object', function(t){
-//   var value = '?';
-//   var actual = app.onlyGetTubeStops(value);
-//   var expected = {
-//     tube: 'Brixton UnderGround Station',
-//     lng: 1234,
-//     lat: 5678
-//   };
-//   t.equal(actual, expected, 'test passed!');
-//   t.end();
-// });
+test('Is an array being returned with wanted data', function(t){
+  var body = JSON.stringify(data.data);
+  var actual = app.SpecificTubeLine(body);
+  var expected = data.expected;
+  t.deepEqual(actual, expected, 'test passed!');
+  t.end();
+});

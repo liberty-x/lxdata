@@ -1,19 +1,15 @@
-function SpecificTubeLine (body){
-  // var tubeStops =[];
-  // tubeStops.push(JSON.parse(body)[1].commonName)
-  console.log('2>>>>>>>>',JSON.parse(body).map(onlyGetTubeStops));
-}
+var app = module.exports = {};
 
-function onlyGetTubeStops (value){
-    var obj= {
+app.SpecificTubeLine = function (body){
+  var all = JSON.parse(body).map(app.onlyGetTubeStops);
+  console.log('ALL>>>>>>>>>', all);
+  return all;
+};
+
+app.onlyGetTubeStops = function (value){
+    return {
       tube: value.commonName,
       lng: value.lon,
       lat: value.lat
     };
-    return obj;
-}
-
-module.exports = {
-  SpecificTubeLine: SpecificTubeLine,
-  onlyGetTubeStops: onlyGetTubeStops
 };
