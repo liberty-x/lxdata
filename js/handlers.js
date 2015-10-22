@@ -38,6 +38,7 @@ handlers.api = function(req, res) {
 };
 
 function apiRequest(userInput) {
+  console.log("here please");
   request('https://api.tfl.gov.uk/Line/' + userInput + '/StopPoints?app_id=' + apiId + '&app_key=' + apiKey, function(error, response, body) {
     if (!error && response.statusCode == 200) {
       app.SpecificTubeLine(body);
