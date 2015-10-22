@@ -34,6 +34,7 @@ function getLineData(lineInput){
   request.send(lineInput);
 }
 
+// doesn't need to be displayed in final app
 function printResponse(response){
   var htmlString = "";
   chartData.innerHTML = response.datasets.reduce(function(previousValue, currentValue, index, array) {

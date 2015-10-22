@@ -39,10 +39,10 @@ app.buildGraphObject = function (largestStations) {
       pointHighlightStroke: "rgba(220,220,220,1)",
       // end of chart formatting
       data: [
-        app.getValueFromStation(currentValue, 'Gates') / 10,
+        app.getValueFromStation(currentValue, 'Gates'),
         app.getValueFromStation(currentValue, 'Lifts'),
         app.getValueFromStation(currentValue, 'Payphones'),
-        app.getValueFromStation(currentValue, 'Escalators') / 3,
+        app.getValueFromStation(currentValue, 'Escalators'),
         app.getValueFromStation(currentValue, 'Cash Machines')
       ]
     };
