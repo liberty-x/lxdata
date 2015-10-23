@@ -6,6 +6,7 @@ var app = require('./app.js');
 var env = require('env2')('./config.env');
 var apiId = process.env.apiId;
 var apiKey = process.env.apiKey;
+var util = require('util');
 
 var headers = {
     'content-type' : 'text/html'
@@ -25,8 +26,8 @@ handlers.file = function(req, res){
 
 handlers.api = function(req, res) {
   var userInput = "";
-  req.on("data", function(data) {
-    userInput += data;
+  req.on("data", function(data){
+      userInput += data;
   });
   req.on("end", function() {
     request('https://api.tfl.gov.uk/Line/' + userInput + '/StopPoints?app_id=' + apiId + '&app_key=' + apiKey, function(error, response, body) {

@@ -2,11 +2,11 @@
 
 # LX Data
 
-Please find our application [here](). (To be linked).
+Please find our application [here](http://immense-beach-1207.herokuapp.com/).
 
 ## Who?
 
-You thought LX Riddle :question: was the finale. You were so *so* wrong.
+You thought [LX Riddle](http://agile-beyond-9343.herokuapp.com/) :question: was the finale. You were so *so* wrong.
 
 From the same team who brought you such hits as LX News :newspaper: and LX Search :mag:, Liberty-X, a team in the 6th iteration of the Founders & Coders academy, brings you **LX Data**.
 
@@ -32,18 +32,18 @@ Our 'Tab 2 Content' will be a comparison graph of the 5 largest stations on the 
 
 #### Dependencies
 
-* add to here
+* env2
+* request
+* [Leaflet](http://leafletjs.com/)
+* [Chartjs](http://www.chartjs.org/)
 
 #### Dev Dependencies
 
-* QUnit (frontend testing)
 * Tape (backend testing)
 * Shot (backend testing)
 * Istanbul (Tests quality of code)
 * Codeclimate (Badge at top of page!)
 
 ### Testing
-
-Please find our frontend tests [here](). (to be linked).
 
 For backend testing, please download our repo and run our backendTest.js file, having used the command ``npm install`` to download our dependencies shown above.
