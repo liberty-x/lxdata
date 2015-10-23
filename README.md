@@ -2,7 +2,9 @@
 
 # LX Data
 
-Please find our application [here](http://immense-beach-1207.herokuapp.com/).
+Please find our application here:
+
+http://lxdata.herokuapp.com/
 
 ## Who?
 
