@@ -69,12 +69,12 @@ test('Is an array being returned with wanted data', function(t){
   t.end();
 });
 
-// test('Does getValueFromStation retrieve a value of a Facility?', function(t){
-//   var actual = app.getValueFromStation(data.victoria, 'Gates');
-//   var expected = 33;
-//   t.deepEqual(actual, expected, 'test passed!');
-//   t.end();
-// });
+test('Does getValueFromStation retrieve a value of a Facility?', function(t){
+  var actual = app.getValueFromStation(data.victoria, 'Gates');
+  var expected = 33;
+  t.deepEqual(actual, expected, 'test passed!');
+  t.end();
+});
 
 test('Does getLargestStations retrieve four largest stations?', function(t){
   var actual = app.getLargestStations(data.data);

@@ -51,9 +51,7 @@ app.buildGraphObject = function (largestStations) {
 };
 
 app.getValueFromStation = function (stationObject, key) {
-  console.log('1');
   key = stationObject.additionalProperties.find(function(element, index, array) {
-    console.log('2');
     if (element.key === key) return true;
   });
   return key ? Number(key.value) : 0; // ternary solves a little bug with Paddington H&C line
