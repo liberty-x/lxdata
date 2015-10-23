@@ -33,7 +33,6 @@ handlers.api = function(req, res) {
     request('https://api.tfl.gov.uk/Line/' + userInput + '/StopPoints?app_id=' + apiId + '&app_key=' + apiKey, function(error, response, body) {
       if (!error && response.statusCode == 200) {
         var stationData = app.getStationData(body);
-        console.log(util.inspect(JSON.stringify(stationData), false, null));
         var mapData = app.SpecificTubeLine(body);
         var obj = {
           stationData : stationData,
