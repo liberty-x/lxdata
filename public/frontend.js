@@ -37,7 +37,6 @@ function getLineData(lineInput){
     if (request.readyState == 4 && request.status === 200) {
       response = JSON.parse(request.response);
       loadMarkers(response.mapData);
-      // printResponse(response.stationData);
       makeChart(response.stationData);
     }
   };
@@ -47,6 +46,7 @@ function getLineData(lineInput){
 
 
 function makeChart(response){
+  document.getElementById('title').style.visibility = "visible";
   var ctx = stationChart.getContext('2d');
   var chart = new Chart(ctx).Radar(response, options);
 }

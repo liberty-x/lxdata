@@ -37,6 +37,7 @@ li {
 }
 
 .chart h4{
+  visibility: hidden;
   font-weight: lighter;
   text-align: center;
   color: #D3D3D3;
