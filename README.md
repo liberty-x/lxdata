@@ -32,11 +32,13 @@ Our 'Tab 2 Content' will be a comparison graph of the 5 largest stations on the 
 
 #### Dependencies
 
-* add to here
+* env2
+* request
+* [Leaflet](http://leafletjs.com/)
+* [Chartjs](http://www.chartjs.org/)
 
 #### Dev Dependencies
 
-* QUnit (frontend testing)
 * Tape (backend testing)
 * Shot (backend testing)
 * Istanbul (Tests quality of code)
