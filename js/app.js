@@ -31,18 +31,18 @@ app.buildGraphObject = function (largestStations) {
     previousValue.datasets[index] = {
       label: currentValue.commonName.replace(' Underground Station', ''),
       // add chart formatting (needs to be made dynamic)
-      fillColor: "rgba(255, 0, 0, 0.2)",
-      strokeColor: "rgba(255, 0, 0, 1)",
-      pointColor: "rgba(255, 0, 0, 1)",
+      fillColor: "rgba(0, 0, 255, 0.2)",
+      strokeColor: "rgba(0, 0, 255, 1)",
+      pointColor: "rgba(0, 0, 255, 1)",
       pointStrokeColor: "#fff",
       pointHighlightFill: "#fff",
       pointHighlightStroke: "rgba(220,220,220,1)",
       // end of chart formatting
       data: [
-        app.getValueFromStation(currentValue, 'Gates'),
+        app.getValueFromStation(currentValue, 'Gates') / 5,
         app.getValueFromStation(currentValue, 'Lifts'),
         app.getValueFromStation(currentValue, 'Payphones'),
-        app.getValueFromStation(currentValue, 'Escalators'),
+        app.getValueFromStation(currentValue, 'Escalators') / 3,
         app.getValueFromStation(currentValue, 'Cash Machines')
       ]
     };
