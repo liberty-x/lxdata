@@ -2,25 +2,28 @@
 <html>
   <head>
     <link href="/public/style.css" rel="stylesheet">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css"/>
   </head>
 
-<body>
-  <h1>Hello World!</h1>
-  <form id="userForm">
-    <input type="text" placeholder="search for a tube line" id="userLine" />
-    <input type="submit" />
-  </form>
-  <div id="map"></div>
-    <div>
-      <canvas id="stationChart" width="200" height="300"></canvas>
+  <body id="body">
+    <div class = "header">
+      <ul>
+        <li><form id="userForm">
+          <input type="text" placeholder="search for a tube line" id="userLine"/>
+          <input type="submit"/>
+        </form></li>
+      </ul>
     </div>
 
-  <div id="chartData">
-  </div>
-  <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
-  <script src="/public/frontend.js"></script>
-</body>
+    <div id="map"></div>
 
+    <div class="chart">
+        <h4 id="title">Data for Top 4 Stations</h4>
+        <canvas id="stationChart"></canvas>
+    </div>
+
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    <script src = "/public/frontend.js"></script>
+  </body>
 </html>
