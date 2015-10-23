@@ -2,27 +2,42 @@ body {
   font-family: sans-serif;
 }
 
-h1 {
-  color: red;
-}
-
-#chartData {
-  font-size: 0.8em;
-}
-
-#chartData h4 {
-  margin-bottom: 0.4em;
-}
-
-#chartData p {
-  margin-bottom: 0;
-  margin-top: 0.1em;
-}
-
-#stationChart {
-  background-color:rgb(69, 69, 69);
-}
 
 #map {
-  height: 500px;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+ul {
+  float: right;
+}
+
+li {
+  float: left;
+  list-style-type: none;
+}
+
+
+#stationChart {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.chart{
+  padding: 1%;
+  position: absolute;
+  bottom: 10%;
+  right: 0;
+  height: 35%;
+  width: 40%;
+}
+
+.chart h4{
+  font-weight: lighter;
+  text-align: center;
+  color: #D3D3D3;
 }
