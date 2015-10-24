@@ -14,7 +14,7 @@ var options = {
       scaleLineColor: "#ffffff",
       scaleLineWidth: 1,
       maintainAspectRatio: false,
-      legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
+      showTooltips: false
     };
 
 var map = L.map('map').setView([51.505, -0.09], 11);
